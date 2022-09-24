@@ -116,7 +116,7 @@ def concaveHull(dataset, k):
                             hull[step-1-j-1],hull[step-j-1])
                     j=j+1
         if ( its==True ):
-            print "all candidates intersect -- restarting with k = ",k+1
+            print(("all candidates intersect -- restarting with k = ",k+1))
             return concaveHull(dataset,k+1)
         prevPoint = currentPoint
         currentPoint = cPoints[i-1]
@@ -128,10 +128,10 @@ def concaveHull(dataset, k):
     p = Path(hull)
     pContained = p.contains_points(dataset, radius=0.0000000001)
     if (not pContained.all()):
-        print "not all points of dataset contained in hull -- restarting with k = ",k+1
+        print(("not all points of dataset contained in hull -- restarting with k = ",k+1))
         return concaveHull(dataset, k+1)
 
-    print "finished with k = ",k
+    print(("finished with k = ",k))
     return hull
 
 
@@ -222,4 +222,7 @@ points_E = np.array([[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[6,2],[6,3],[5,3],[4,3]
                     [2,9],[2,10],[3,10],[4,10],[5,10],[3,6],[4,6],[5,6],[4.5,7],[3,8.5],
                     ])
 
-
+if __name__ == '__main__':
+    points = np.random.uniform(low=-10.0, high=10.0, size=(50,2))
+    hull = concaveHull(points,5)
+    plotPath(points, hull)

@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/bin/env python3
 
 ##
 ## calculate the concave hull of a set of points

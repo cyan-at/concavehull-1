@@ -74,8 +74,7 @@ def removePoint(dataset, point):
     newdata = dataset[delmask]
     return newdata
 
-
-def concaveHull(dataset, k):
+def concaveHull(dataset, k=5):
     assert k >= 3, 'k has to be greater or equal to 3.'
     points = dataset
     # todo: remove duplicate points from dataset
@@ -223,6 +222,7 @@ points_E = np.array([[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[6,2],[6,3],[5,3],[4,3]
                     ])
 
 if __name__ == '__main__':
-    points = np.random.uniform(low=-10.0, high=10.0, size=(50,2))
-    hull = concaveHull(points,5)
+    points = np.random.uniform(
+        low=-10.0, high=10.0, size=(50,2))
+    hull = concaveHull(points)
     plotPath(points, hull)
